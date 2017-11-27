@@ -36,38 +36,10 @@ function AddtoCart(name, description, price, stock) {
     displayShoppingCart();
 }
 
-// function removeitem(stock) {
-//     for (var Product in inventory) {
-//         cellStock.innerHTML = shoppingCart[product].Stock;
-//     }
-// }
-
-// function addtoinven() {
-//     var Product = {};
-//     Product.Name = name;
-//     Product.Description = description;
-//     Product.Price = price;
-//     inventory.push(Product);
-//     for (var Product in inventory) {
-//         var row = Product.insertRow();
-//     }
-// }
 function main() {
     $('#game-over').html(
         'Game Over <i class="fa fa-gamepad" aria-hidden="true"></i>'
     );
-    $('#tblProducts tbody').on('click', 'td', function() {
-        var tdAttr = $(this).attr('class');
-        alert(
-            $(this)
-                .closest('tr')
-                .find('td.' + tdAttr)
-                .text()
-        );
-        /*
-          or $(this).text(), $(this).attr('class') or $(this).data('id')
-        */
-    });
 
     AddtoCart();
     displayShoppingCart();
