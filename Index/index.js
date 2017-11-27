@@ -1,18 +1,15 @@
 var shoppingCart = [];
 
 function displayShoppingCart() {
-    var orderedProductsTblBody = document.getElementById(
-        'orderedProductsTblBody'
-    );
-    while (orderedProductsTblBody.rows.length > 0) {
-        orderedProductsTblBody.deleteRow(0);
+    var orderProductsTbl = document.getElementById('orderProductsTbl');
+    while (orderProductsTbl.rows.length > 0) {
+        orderProductsTbl.deleteRow(0);
     }
-
     //variable to hold total price of shopping cart
     var cart_total_price = 0;
     for (var product in shoppingCart) {
         //add new row
-        var row = orderedProductsTblBody.insertRow();
+        var row = orderProductsTbl.insertRow();
         var cellName = row.insertCell(0);
         var cellDescription = row.insertCell(1);
         var cellPrice = row.insertCell(2);
@@ -42,7 +39,6 @@ function AddtoCart(name, description, price, stock) {
 // function removeitem(stock) {
 //     for (var Product in inventory) {
 //         cellStock.innerHTML = shoppingCart[product].Stock;
-
 //     }
 // }
 
@@ -60,6 +56,19 @@ function main() {
     $('#game-over').html(
         'Game Over <i class="fa fa-gamepad" aria-hidden="true"></i>'
     );
+    $('#tblProducts tbody').on('click', 'td', function() {
+        var tdAttr = $(this).attr('class');
+        alert(
+            $(this)
+                .closest('tr')
+                .find('td.' + tdAttr)
+                .text()
+        );
+        /*
+          or $(this).text(), $(this).attr('class') or $(this).data('id')
+        */
+    });
+
     AddtoCart();
     displayShoppingCart();
 }
